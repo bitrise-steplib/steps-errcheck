@@ -1,0 +1,27 @@
+title: Errcheck
+summary: Check for unchecked errors in go program
+description: |-
+  Runs golint command on the given packages one-by-one:
+  
+  `errcheck -asserts=true -blank=true -verbose <package>`
+
+website: https://github.com/bitrise-steplib/steps-errcheck
+source_code_url: https://github.com/bitrise-steplib/steps-errcheck
+support_url: https://github.com/bitrise-steplib/steps-errcheck/issues
+
+type_tags:
+  - test
+
+toolkit:
+  go:
+    package_name: github.com/bitrise-steplib/steps-errcheck
+
+inputs:
+- packages: $BITRISE_GO_PACKAGES
+  opts:
+    title: errcheck target packages
+    summary: errcheck target packages
+    description: |-
+      Newline (`\n`) separated list of go packages, to run the errcheck command against.
+
+      Example: `github.com/my/step\ngithub.com/bitrise/step/tool`
