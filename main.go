@@ -24,7 +24,7 @@ func main() {
 	packages := os.Getenv("packages")
 
 	log.Infof("Configs:")
-	log.Printf("- exclude: %s", packages)
+	log.Printf("- packages: %s", packages)
 
 	if packages == "" {
 		failf("Required input not defined: packages")
