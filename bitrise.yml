@@ -10,9 +10,17 @@ workflows:
   test:
     before_run:
     - audit-this-step
-    after_run:
     - go-tests
-    - integration_test
+    steps:
+    - change-workdir:
+        title: Switch working dir to ./_tmp dir
+        inputs:
+        - path: ./_tmp
+        - is_create_path: true
+    - path::./:
+        title: Step Test
+        inputs:
+        - packages: github.com/bitrise-steplib/steps-errcheck
 
   go-tests:
     before_run:
@@ -56,18 +64,6 @@ workflows:
             #!/bin/bash
             set -ex
             go test $(go list ./... | grep -v vendor)
-
-  integration_test:
-    steps:
-    - change-workdir:
-        title: Switch working dir to ./_tmp dir
-        inputs:
-        - path: ./_tmp
-        - is_create_path: true
-    - path::./:
-        title: Step Test
-        inputs:
-        - packages: github.com/bitrise-steplib/steps-errcheck
 
   # ----------------------------------------------------------------
   # --- Utility workflows
