@@ -1,7 +1,7 @@
 title: Errcheck
-summary: Check for unchecked errors in go program
+summary: Checks for unchecked errors in go program
 description: |-
-  Runs golint command on the given packages one-by-one:
+  Runs errcheck command on the given packages one-by-one:
   
   `errcheck -asserts=true -blank=true -verbose <package>`
 
@@ -11,6 +11,11 @@ support_url: https://github.com/bitrise-steplib/steps-errcheck/issues
 
 type_tags:
   - test
+  
+is_requires_admin_user: true
+is_always_run: false
+is_skippable: false
+run_if: ""
 
 toolkit:
   go:
