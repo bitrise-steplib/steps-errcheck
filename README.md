@@ -1,6 +1,6 @@
 # Errcheck
 
-Check for unchecked errors in go program
+Check for unchecked errors in Go program
 
 ## How to use this Step
 
