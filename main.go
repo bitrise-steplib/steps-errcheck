@@ -31,7 +31,7 @@ func main() {
 	}
 
 	if !installedInPath("errcheck") {
-		cmd := command.New("go", "get", "-u", "github.com/kisielk/errcheck")
+		cmd := command.New("go", "get", "-u", "github.com/kisielk/errcheck").AppendEnvs("GO111MODULE=off")
 
 		log.Infof("\nInstalling errcheck")
 		log.Donef("$ %s", cmd.PrintableCommandArgs())
