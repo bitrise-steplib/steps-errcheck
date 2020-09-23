@@ -6,7 +6,12 @@ workflows:
     before_run:
     - audit-this-step
     steps:
-    - go-list:
+    - go-list@0:
+        inputs:
+        # workaround for https://github.com/bitrise-steplib/steps-go-list/issues/2
+        - exclude: |-
+            */vendor/*
+            go: downloading *
     - golint:
     - errcheck:
     - go-test:
