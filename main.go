@@ -31,7 +31,7 @@ func main() {
 	}
 
 	if !installedInPath("errcheck") {
-		cmd := command.New("go", "get", "-u", "github.com/kisielk/errcheck").AppendEnvs("GO111MODULE=off")
+		cmd := command.New("go", "get", "-u", "github.com/kisielk/errcheck")
 		cmd.SetDir("/") // workaround for https://github.com/golang/go/issues/30515 to install the package globally
 
 		log.Infof("\nInstalling errcheck")
