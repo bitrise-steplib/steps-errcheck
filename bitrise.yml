@@ -9,7 +9,8 @@ workflows:
     - go-list:
     # - golint:
     - git::https://github.com/imrekel/steps-golint.git@master:
-    - errcheck:
+    # - errcheck:
+    - git::https://github.com/bitrise-steplib/steps-errcheck.git@gomod-off-for-install:
     - go-test:
     - change-workdir:
         title: Switch working dir to ./_tmp dir
