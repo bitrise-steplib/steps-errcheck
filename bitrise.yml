@@ -7,10 +7,8 @@ workflows:
     - audit-this-step
     steps:
     - go-list:
-    # - golint:
-    - git::https://github.com/imrekel/steps-golint.git@master:
-    # - errcheck:
-    - git::https://github.com/bitrise-steplib/steps-errcheck.git@gomod-off-for-install:
+    - golint:
+    - errcheck:
     - go-test:
     - change-workdir:
         title: Switch working dir to ./_tmp dir
