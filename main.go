@@ -32,6 +32,7 @@ func main() {
 
 	if !installedInPath("errcheck") {
 		cmd := command.New("go", "get", "-u", "github.com/kisielk/errcheck")
+		cmd.SetDir("/") // workaround for https://github.com/golang/go/issues/30515 to install the package globally
 
 		log.Infof("\nInstalling errcheck")
 		log.Donef("$ %s", cmd.PrintableCommandArgs())
