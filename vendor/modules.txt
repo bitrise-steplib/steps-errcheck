@@ -1,7 +1,9 @@
-# github.com/bitrise-io/go-utils v0.0.0-20171214135957-b33f6bcef9b5
+# github.com/bitrise-io/go-utils v0.0.0-20210713111255-08be784d45d0
 ## explicit
 github.com/bitrise-io/go-utils/colorstring
 github.com/bitrise-io/go-utils/command
-github.com/bitrise-io/go-utils/errorutil
 github.com/bitrise-io/go-utils/log
 github.com/bitrise-io/go-utils/pathutil
+# github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
+## explicit
+github.com/kballard/go-shellquote

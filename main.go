@@ -7,6 +7,7 @@ import (
 
 	"github.com/bitrise-io/go-utils/command"
 	"github.com/bitrise-io/go-utils/log"
+	"github.com/kballard/go-shellquote"
 )
 
 func installedInPath(name string) bool {
@@ -22,13 +23,26 @@ func failf(format string, args ...interface{}) {
 
 func main() {
 	packages := os.Getenv("packages")
+	additionalArgs := os.Getenv("additional_arguments")
 
 	log.Infof("Configs:")
 	log.Printf("- packages: %s", packages)
+	log.Printf("- additional_arguments: %s", additionalArgs)
 
 	if packages == "" {
 		failf("Required input not defined: packages")
 	}
+
+	var args []string
+	if len(additionalArgs) > 0 {
+		var err error
+		args, err = shellquote.Split(additionalArgs)
+		if err != nil {
+			failf("Invalid additional_arguments: %s", err)
+		}
+	}
+
+
 
 	if !installedInPath("errcheck") {
 		cmd := command.New("go", "get", "-u", "github.com/kisielk/errcheck")
@@ -45,7 +59,8 @@ func main() {
 	log.Infof("\nRunning errcheck...")
 
 	for _, p := range strings.Split(packages, "\n") {
-		cmd := command.NewWithStandardOuts("errcheck", "-asserts=true", "-blank=true", "-verbose", p)
+		args = append(args, p)
+		cmd := command.NewWithStandardOuts("errcheck", args...)
 
 		log.Printf("$ %s", cmd.PrintableCommandArgs())
 

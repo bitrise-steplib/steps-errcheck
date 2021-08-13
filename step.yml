@@ -30,3 +30,11 @@ inputs:
       Newline (`\n`) separated list of go packages, to run the errcheck command against.
 
       Example: `github.com/my/step\ngithub.com/bitrise/step/tool`
+- additional_arguments: -asserts=true -blank=true -verbose
+  opts:
+    title: Additional arguments
+    summary: Additional arguments to be added to the errcheck command.
+    description: |-
+      Additional arguments to be added to the errcheck command.
+
+      errcheck <additional_arguments> github.com/my/step
